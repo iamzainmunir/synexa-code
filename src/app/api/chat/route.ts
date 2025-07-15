@@ -191,9 +191,9 @@ export async function POST(req: Request) {
 
     return new Response(
       JSON.stringify({
-        id: Date.now().toString(),         // ✅ Required
-        role: "assistant",                 // ✅ Required
-        content: result.text,              // ✅ The answer
+        id: Date.now().toString(),
+        role: "assistant",
+        content: result.text,
       }),
       { headers: { "Content-Type": "application/json" } }
     );
