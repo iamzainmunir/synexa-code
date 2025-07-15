@@ -72,7 +72,6 @@ const ChatBot: React.FC<ChatBotProps> = ({
     append,
   } = useChat({
     api: "/api/chat",
-    stream: false, // Important for Gemini
     onResponse: async (res) => {
       const data = await res.json();
       append({
