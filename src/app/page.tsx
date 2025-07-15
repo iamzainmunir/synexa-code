@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "@/components/hero-section";
-import { InfiniteSlider } from "../../infinite-slider";
+import { InfiniteSlider } from "../components/infinite-slider";
 import Image from "next/image";
 
 const page = () => {
