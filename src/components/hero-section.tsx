@@ -7,8 +7,9 @@ import Image from "next/image";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import clsx from "clsx";
-import { syne, unbounded } from "../../public/fonts/font";
+import { syne } from "../../public/fonts/font";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
+import Typewriter from "typewriter-effect";
 
 const transitionVariants = {
   item: {
@@ -43,7 +44,7 @@ export default function HeroSection() {
           <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
         </div>
         <section>
-          <div className="relative pt-24 md:pt-36">
+          <div className="relative pt-10">
             <AnimatedGroup
               variants={{
                 container: {
@@ -71,16 +72,16 @@ export default function HeroSection() {
               }}
               className="absolute inset-0 -z-20"
             >
-              <Image
+              {/* <Image
                 src="/images/spotlight.png"
                 alt="background"
                 className="absolute inset-x-0 top-56 -z-20 hidden lg:top-32 dark:block"
                 width="3276"
                 height="4095"
-              />
+              /> */}
             </AnimatedGroup>
             <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"></div>
-            <div className="mx-auto max-w-7xl px-6">
+            <div className="mx-auto max-w-7xl sm:px-6 ">
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
                 <AnimatedGroup variants={transitionVariants}>
                   <HoverBorderGradient
@@ -104,17 +105,33 @@ export default function HeroSection() {
                   </HoverBorderGradient>
                 </AnimatedGroup>
 
-                <TextEffect
-                  preset="fade-in-blur"
-                  speedSegment={0.3}
-                  as="h1"
+                <h2
                   className={clsx(
-                    "mt-8  text-balance text-4xl sm:text-5xl md:text-7xl lg:mt-16 xl:text-[5.25rem]",
-                    unbounded.className
+                    "mt-8  text-balance text-[32px] sm:text-5xl md:text-7xl lg:mt-16 xl:text-[5.25rem]",
+                    syne.className
                   )}
                 >
-                  Empowering Safer Workplaces Through World-Class HSE Training
-                </TextEffect>
+                  Empowering Safer Workplaces Through
+                  <br />
+                  {
+                    <span className="text-primary text-[28px] sm:text-4xl md:text-6xl lg:mt-16 xl:text-[4.25rem]">
+                      <Typewriter
+                        options={{
+                          strings: [
+                            "certified training",
+                            "expert consultancy.",
+                            "ISO standards.",
+                            "safety audits.",
+                            "global compliance.",
+                            "proven results.",
+                          ],
+                          autoStart: true,
+                          loop: true,
+                        }}
+                      />
+                    </span>
+                  }
+                </h2>
                 <TextEffect
                   per="line"
                   preset="fade-in-blur"
@@ -122,7 +139,7 @@ export default function HeroSection() {
                   delay={0.5}
                   as="p"
                   className={clsx(
-                    "mx-auto mt-8 max-w-2xl text-balance text-sm sm:text-lg",
+                    "mx-auto mt-8 max-w-2xl text-balance text-sm sm:text-lg px-2",
                     syne.className
                   )}
                 >
@@ -203,13 +220,13 @@ export default function HeroSection() {
                     width="2700"
                     height="1440"
                   />
-                  <Image
-                    className="z-2 border-border/25 aspect-15/8  object-cover relative rounded-2xl border dark:hidden"
+                  {/* <Image
+                    className="z-2 border-border/25 aspect-15/8  object-cover relative rounded-2xl border dark:hidden "
                     src="/images/hero.webp"
                     alt="app screen"
                     width="2700"
                     height="1440"
-                  />
+                  /> */}
                 </div>
               </div>
             </AnimatedGroup>

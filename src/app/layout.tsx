@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { urbanist } from "../../public/fonts/font";
 import { ThemeProvider } from "@/components/theme-provider";
-import { HeroHeader } from "@/components/header";
+// import { HeroHeader } from "@/components/header";
 import ChatBot from "@/components/chatbot";
 
 export const metadata: Metadata = {
@@ -25,8 +25,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <HeroHeader />
           <ChatBot />
+          {/* <HeroHeader /> */}
           {children}
         </ThemeProvider>
       </body>

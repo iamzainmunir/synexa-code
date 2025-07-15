@@ -2,10 +2,16 @@ import React from "react";
 import HeroSection from "@/components/hero-section";
 import { InfiniteSlider } from "../components/infinite-slider";
 import Image from "next/image";
+import Slider from "@/components/slider";
+import { HeroHeader } from "@/components/header";
 
 const page = () => {
   return (
-    <div className="container">
+    <div>
+      <HeroHeader />
+      <div className="pt-[60px] lg:pt-[100px]">
+        <Slider />
+      </div>
       <HeroSection />
       <InfiniteSlider speedOnHover={20} gap={35}>
         <Image

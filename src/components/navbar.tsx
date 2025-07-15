@@ -168,7 +168,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button & Theme Toggle */}
-        <div className="flex items-center space-x-4">
+        <div className="flex  items-center space-x-4">
           <ModeToggle />
 
           {/* Mobile Menu Button */}
