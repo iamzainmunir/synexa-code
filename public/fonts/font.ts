@@ -1,4 +1,5 @@
 import { Urbanist, Unbounded, Syne } from 'next/font/google';
+import localFont from 'next/font/local';
 
 export const urbanist = Urbanist({
     subsets: ['latin'],
@@ -6,6 +7,13 @@ export const urbanist = Urbanist({
     variable: '--font-urbanist',
     display: 'swap',
 });
+
+export const intergralCF_Bold = localFont({
+    src: './Demo_Fonts/integralcf-bold.otf',
+    variable: '--font-intergralcf-bold',
+    display: 'swap',
+
+})
 
 export const unbounded = Unbounded({
     subsets: ['latin'],

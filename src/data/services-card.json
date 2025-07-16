@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "title": "NEBOSH IGC",
+    "content": "Internationally recognized safety certification for professionals.",
+    "description": "NEBOSH International General Certificate (IGC) is designed for individuals seeking to build a solid foundation in occupational safety and health. Recognized worldwide, this course enhances your ability to identify and manage workplace risks while meeting global compliance standards.",
+    "imageSrc": "/images/services-cards/img1.jpg",
+    "date": "05",
+    "month": "Aug"
+  },
+  {
+    "id": "2",
+    "title": "OSHA 30 Hours",
+    "content": "Occupational Safety & Health training for general industry.",
+    "description": "The OSHA 30-hour training program provides comprehensive instruction on workplace safety, focusing on hazard recognition, prevention, and OSHA regulations. It’s ideal for safety managers, supervisors, and team leaders in industrial settings.",
+    "imageSrc": "/images/services-cards/img2.jpg",
+    "date": "12",
+    "month": "Sep"
+  },
+  {
+    "id": "3",
+    "title": "BLS / First Aid",
+    "content": "Certified by AHA & Saudi Heart Association.",
+    "description": "This hands-on course covers Basic Life Support (BLS), CPR, and essential first aid skills. It equips participants to respond confidently to medical emergencies in both personal and professional environments. Certification is issued by AHA and the Saudi Heart Association.",
+    "imageSrc": "/images/services-cards/img3.jpg",
+    "date": "20",
+    "month": "Jul"
+  },
+  {
+    "id": "4",
+    "title": "Confined Space Entry Supervisor",
+    "content": "Practical training for supervisors in confined areas.",
+    "description": "This course provides safety procedures, equipment usage, and legal requirements for supervising work in confined spaces. Participants learn hazard assessment, rescue protocols, and emergency planning as per international safety standards.",
+    "imageSrc": "/images/services-cards/img4.jpg",
+    "date": "28",
+    "month": "Aug"
+  },
+  {
+    "id": "5",
+    "title": "Fire Watcher & Standby Man",
+    "content": "Essential course for on-site emergency safety roles.",
+    "description": "This course trains participants to monitor hot work areas, respond to fire hazards, and maintain emergency readiness. It’s crucial for teams working in high-risk industrial zones, ensuring quick response and safety assurance.",
+    "imageSrc": "/images/services-cards/img5.jpg",
+    "date": "02",
+    "month": "Sep"
+  },
+  {
+    "id": "6",
+    "title": "ISO 45001 Certification",
+    "content": "Occupational health and safety management systems.",
+    "description": "ISO 45001 is the global standard for Occupational Health and Safety (OHS) management. This course guides professionals in establishing systems that reduce workplace risks, improve employee well-being, and ensure organizational compliance.",
+    "imageSrc": "/images/services-cards/img6.jpg",
+    "date": "17",
+    "month": "Oct"
+  }
+]

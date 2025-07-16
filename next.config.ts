@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
         hostname: "html.tailus.io",
 
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      }
     ]
   },
   eslint: {

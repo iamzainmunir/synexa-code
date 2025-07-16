@@ -7,7 +7,7 @@ import Image from "next/image";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 import clsx from "clsx";
-import { syne } from "../../public/fonts/font";
+import { intergralCF_Bold, syne, unbounded } from "../../public/fonts/font";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import Typewriter from "typewriter-effect";
 
@@ -72,13 +72,7 @@ export default function HeroSection() {
               }}
               className="absolute inset-0 -z-20"
             >
-              <Image
-                src="/images/spotlight.png"
-                alt="background"
-                className="absolute inset-x-0 top-56 -z-20 hidden lg:top-32 dark:block"
-                width="3276"
-                height="4095"
-              />
+              <span></span>
             </AnimatedGroup>
             <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"></div>
             <div className="mx-auto max-w-7xl sm:px-6 ">
@@ -107,14 +101,19 @@ export default function HeroSection() {
 
                 <h2
                   className={clsx(
-                    "mt-8  text-balance text-[32px] sm:text-5xl md:text-7xl lg:mt-16 xl:text-[5.25rem]",
-                    syne.className
+                    "mt-8  text-balance text-[32px] font-bold leading-tight sm:text-5xl md:text-7xl lg:mt-16 xl:text-[5.25rem]",
+                    intergralCF_Bold.className
                   )}
                 >
                   Empowering Safer Workplaces Through
                   <br />
                   {
-                    <span className="text-primary text-[28px] sm:text-4xl md:text-6xl lg:mt-16 xl:text-[4.25rem]">
+                    <span
+                      className={clsx(
+                        "text-primary text-[35px] sm:text-4xl md:text-6xl lg:mt-16 xl:text-[4.25rem]",
+                        unbounded.className
+                      )}
+                    >
                       <Typewriter
                         options={{
                           strings: [
@@ -220,13 +219,13 @@ export default function HeroSection() {
                     width="2700"
                     height="1440"
                   />
-                  {/* <Image
+                  <Image
                     className="z-2 border-border/25 aspect-15/8  object-cover relative rounded-2xl border dark:hidden "
                     src="/images/hero.webp"
                     alt="app screen"
                     width="2700"
                     height="1440"
-                  /> */}
+                  />
                 </div>
               </div>
             </AnimatedGroup>

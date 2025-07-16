@@ -18,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased ${urbanist.className}`}>
+      <body
+        suppressHydrationWarning
+        className={`antialiased ${urbanist.className}`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

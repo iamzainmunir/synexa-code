@@ -4,6 +4,9 @@ import { InfiniteSlider } from "../components/infinite-slider";
 import Image from "next/image";
 import Slider from "@/components/slider";
 import { HeroHeader } from "@/components/header";
+import CoursesAndCertificates from "@/components/courses-and-certificates";
+import CountUpOnScroll from "@/components/CountUp";
+import AboutSectionCompanyValues from "@/components/company-values";
 
 const page = () => {
   return (
@@ -13,7 +16,7 @@ const page = () => {
         <Slider />
       </div>
       <HeroSection />
-      <InfiniteSlider speedOnHover={20} gap={35}>
+      <InfiniteSlider className="container" speedOnHover={20} gap={35}>
         <Image
           src="/images/working-brands/img1.webp"
           alt="Yung Lean - Stardust"
@@ -71,6 +74,48 @@ const page = () => {
           height={120}
         />
       </InfiniteSlider>
+      <CoursesAndCertificates />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mt-24 container">
+        <div>
+          <CountUpOnScroll
+            to={5000}
+            suffix="+"
+            className="text-4xl font-bold text-primary"
+          />
+          <p className="mt-2 text-lg text-gray-700 font-bold">
+            Professionals Trained
+          </p>
+        </div>
+        <div>
+          <CountUpOnScroll
+            to={98}
+            suffix="%"
+            className="text-4xl font-bold text-green-600"
+          />
+          <p className="mt-2 text-lg text-gray-700 font-bold">Success Rate</p>
+        </div>
+        <div>
+          <CountUpOnScroll
+            to={25}
+            suffix="+"
+            className="text-4xl font-bold text-blue-600"
+          />
+          <p className="mt-2 text-lg text-gray-700 font-bold">
+            Corporate Partners
+          </p>
+        </div>
+        <div>
+          <CountUpOnScroll
+            to={3}
+            suffix="+"
+            className="text-4xl font-bold text-purple-600"
+          />
+          <p className="mt-2 text-lg text-gray-700 font-bold">
+            Countries Served
+          </p>
+        </div>
+      </div>
+      <AboutSectionCompanyValues />
     </div>
   );
 };

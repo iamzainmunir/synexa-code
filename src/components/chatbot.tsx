@@ -137,7 +137,7 @@ const ChatBot: React.FC<ChatBotProps> = ({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.05 }}
-          className={`flex gap-3 ${
+          className={`flex gap-3 my-2 ${
             message.role === "user" ? "justify-end" : "justify-start"
           }`}
         >
