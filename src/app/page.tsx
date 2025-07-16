@@ -7,10 +7,12 @@ import { HeroHeader } from "@/components/header";
 import CoursesAndCertificates from "@/components/courses-and-certificates";
 import CountUpOnScroll from "@/components/CountUp";
 import AboutSectionCompanyValues from "@/components/company-values";
+import Faqs from "@/components/faqs";
+import Footer from "@/components/footer";
 
 const page = () => {
   return (
-    <div>
+    <>
       <HeroHeader />
       <div className="pt-[60px] lg:pt-[100px]">
         <Slider />
@@ -116,7 +118,9 @@ const page = () => {
         </div>
       </div>
       <AboutSectionCompanyValues />
-    </div>
+      <Faqs />
+      <Footer />
+    </>
   );
 };
 

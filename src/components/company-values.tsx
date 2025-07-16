@@ -48,18 +48,18 @@ const companyValues: CompanyValue[] = [
     id: "innovation",
     name: "Innovation",
     description:
-      "We constantly push boundaries and challenge the status quo, fostering a culture where creative thinking, continuous improvement, and experimentation are encouraged at every level of the organization.",
+      "At MCC, we believe innovation drives safer futures. We integrate modern learning methods, digital tools, and scenario-based simulations to ensure HSE training stays relevant and impactful.",
     icon: Lightbulb,
     color: "text-amber-500",
     principles: [
-      "Embrace experimentation and calculated risk-taking",
-      "Challenge outdated assumptions and processes",
-      "Dedicate time and resources to exploring new ideas",
-      "Learn from failures and iterate rapidly",
+      "Implement smart, tech-driven training modules",
+      "Encourage out-of-the-box problem solving",
+      "Adopt updated safety standards and case studies",
+      "Continuously refine methods based on feedback",
     ],
     testimonial: {
       quote:
-        "Working in an environment that truly values innovation isn't just about access to the latest tools—it's about being empowered to think differently, take risks, and explore ideas that challenge the norm.",
+        "MCC’s creative approach helped us understand safety beyond theory — it became real, applicable, and memorable.",
       author: "Alex Chen",
       role: "Lead Product Engineer",
       image:
@@ -72,18 +72,18 @@ const companyValues: CompanyValue[] = [
     id: "integrity",
     name: "Integrity",
     description:
-      "We are committed to honesty, ethical conduct, and full transparency in every training session, assessment, and corporate engagement.",
+      "We uphold the highest ethical standards in all our services. From registration to certification, every step at MCC is guided by transparency, honesty, and trust.",
     icon: ShieldCheck,
     color: "text-blue-600",
     principles: [
-      "Always act with transparency and accountability",
-      "Follow global HSE standards and ethical practices",
-      "Uphold trust with clients and trainees alike",
-      "Ensure compliance with zero compromise",
+      "Stay true to international training ethics",
+      "Ensure transparency in course delivery",
+      "Protect student data and certification processes",
+      "Build long-term trust with every partner",
     ],
     testimonial: {
       quote:
-        "Integrity is what sets MCC apart. You can rely on them to be honest, consistent, and fair — both in training and in professional partnerships.",
+        "You can trust MCC with your career and your team's safety — they never overpromise, and always deliver what they commit.",
       author: "Sara Khan",
       role: "Corporate Compliance Advisor",
       image:
@@ -96,18 +96,18 @@ const companyValues: CompanyValue[] = [
     id: "collaboration",
     name: "Collaboration",
     description:
-      "We believe in working together — with clients, students, and industry experts — to design solutions that drive measurable safety outcomes.",
+      "We work closely with companies, government bodies, and individuals to build safety programs that match local and global operational realities.",
     icon: Users,
     color: "text-violet-500",
     principles: [
-      "Encourage teamwork and shared learning",
-      "Partner with clients to design training plans",
-      "Actively engage with feedback and adapt",
-      "Promote knowledge-sharing across industries",
+      "Design courses in partnership with client goals",
+      "Stay aligned with site-specific requirements",
+      "Promote teamwork during sessions and workshops",
+      "Build knowledge together, not in silos",
     ],
     testimonial: {
       quote:
-        "MCC doesn’t work in isolation. They truly collaborate, involving our team in every step to deliver impactful, customized training.",
+        "MCC involved our site supervisors, HR team, and safety leads in designing the perfect training experience for our team.",
       author: "Awais Raza",
       role: "HSE Manager – Energy Sector",
       image:
@@ -120,18 +120,18 @@ const companyValues: CompanyValue[] = [
     id: "customer-focus",
     name: "Customer Focus",
     description:
-      "We place the needs of our clients and learners first, tailoring every training experience to deliver long-term value and satisfaction.",
+      "Every MCC service is designed around the learner’s or client’s goals. Whether it's an individual course or a full corporate roadmap, our approach is human-centered and result-driven.",
     icon: Heart,
     color: "text-rose-500",
     principles: [
-      "Understand and prioritize client objectives",
-      "Provide tailored solutions for every industry",
-      "Deliver ongoing support and guidance",
-      "Continuously improve based on feedback",
+      "Offer personalized support to every trainee",
+      "Adapt schedules and formats to client needs",
+      "Follow up post-training to ensure success",
+      "Handle each inquiry with professionalism and care",
     ],
     testimonial: {
       quote:
-        "From the very first interaction, MCC made us feel heard and supported. Their team went above and beyond to make sure we got the training we needed.",
+        "MCC isn’t just a training center — they treat you like a partner. Everything was tailored to our specific work environment.",
       author: "Fatima Siddiqui",
       role: "Operations Director – Logistics",
       image:
@@ -144,18 +144,18 @@ const companyValues: CompanyValue[] = [
     id: "excellence",
     name: "Excellence",
     description:
-      "We strive to exceed expectations and set high standards in everything we do — from course design to trainer performance and client service.",
+      "We aim to lead the HSE training industry by maintaining superior quality in every program — through certified instructors, global standards, and impactful delivery.",
     icon: CheckCircle,
     color: "text-emerald-600",
     principles: [
-      "Commit to delivering premium training outcomes",
-      "Continuously raise the bar of performance",
-      "Maintain top-quality certification standards",
-      "Ensure client and trainee satisfaction at every step",
+      "Hire experienced, certified trainers",
+      "Align every course with latest HSE frameworks",
+      "Ensure high passing and satisfaction rates",
+      "Push beyond basic compliance to real impact",
     ],
     testimonial: {
       quote:
-        "MCC sets the benchmark for HSE training. Their attention to detail, content depth, and trainer quality are unmatched in the region.",
+        "What stood out about MCC was their commitment to detail and perfection — from training materials to assessments.",
       author: "Zain Malik",
       role: "Training Quality Auditor",
       image:
@@ -168,18 +168,18 @@ const companyValues: CompanyValue[] = [
     id: "sustainability",
     name: "Sustainability",
     description:
-      "We take a long-term view in everything we do — promoting safe behaviors, health-first policies, and environmental consciousness.",
+      "We believe that long-term safety is rooted in sustainability. Our training encourages responsible actions that benefit both people and the planet.",
     icon: Globe,
     color: "text-green-600",
     principles: [
-      "Encourage eco-friendly and safe practices",
-      "Reduce workplace hazards sustainably",
-      "Promote long-term well-being of people and environments",
-      "Integrate ESG values into safety culture",
+      "Encourage safe behaviors with environmental impact",
+      "Reduce training waste via digital delivery",
+      "Promote responsible site operations",
+      "Educate teams on health-first long-term culture",
     ],
     testimonial: {
       quote:
-        "Safety isn’t short-term. MCC’s sustainability-first thinking helped us build a long-term HSE strategy that benefits both people and planet.",
+        "MCC helped us build an HSE system that doesn’t just comply, but sustains — for years to come.",
       author: "Hamza Rehman",
       role: "ISO & ESG Consultant",
       image:
@@ -189,6 +189,7 @@ const companyValues: CompanyValue[] = [
       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8U3VzdGFpbmFiaWxpdHl8ZW58MHx8MHx8fDA%3D",
   },
 ];
+
 export default function AboutSectionCompanyValues() {
   const [activeValue, setActiveValue] = useState<string>(companyValues[0].id);
 
