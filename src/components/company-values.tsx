@@ -65,8 +65,7 @@ const companyValues: CompanyValue[] = [
       image:
         "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400",
     },
-    image:
-      "https://images.unsplash.com/photo-1598520106830-8c45c2035460?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5ub3ZhdGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+    image: "/images/core-features/1.png",
   },
   {
     id: "integrity",
@@ -89,8 +88,7 @@ const companyValues: CompanyValue[] = [
       image:
         "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=400",
     },
-    image:
-      "https://images.unsplash.com/photo-1607000975677-90533e4355fe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8SW50ZWdyaXR5fGVufDB8fDB8fHww",
+    image: "/images/core-features/2.png",
   },
   {
     id: "collaboration",
@@ -113,8 +111,7 @@ const companyValues: CompanyValue[] = [
       image:
         "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=400",
     },
-    image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Q29sbGFib3JhdGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+    image: "/images/core-features/3.png",
   },
   {
     id: "customer-focus",
@@ -137,8 +134,7 @@ const companyValues: CompanyValue[] = [
       image:
         "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=400",
     },
-    image:
-      "https://images.unsplash.com/photo-1611663671209-772c4073b5b4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fEZvY3VzfGVufDB8fDB8fHww",
+    image: "/images/core-features/4.png",
   },
   {
     id: "excellence",
@@ -161,8 +157,7 @@ const companyValues: CompanyValue[] = [
       image:
         "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400",
     },
-    image:
-      "https://images.unsplash.com/photo-1611075384322-731537ad7971?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RXhjZWxsZW5jZXxlbnwwfHwwfHx8MA%3D%3D",
+    image: "/images/core-features/5.png",
   },
   {
     id: "sustainability",
@@ -185,8 +180,7 @@ const companyValues: CompanyValue[] = [
       image:
         "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=400",
     },
-    image:
-      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8U3VzdGFpbmFiaWxpdHl8ZW58MHx8MHx8fDA%3D",
+    image: "/images/core-features/6.png",
   },
 ];
 

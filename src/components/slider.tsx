@@ -1,15 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import required modules
 import { Autoplay, Pagination } from "swiper/modules";
 
 const useWindowWidth = () => {
@@ -27,8 +24,11 @@ const useWindowWidth = () => {
 
   return width;
 };
+
 export default function App() {
   const width = useWindowWidth();
+  const isMobile = width && width < 768; // ✅ Tailwind md breakpoint logic (you can adjust)
+
   return (
     <>
       <Swiper
@@ -44,39 +44,54 @@ export default function App() {
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
+        {/* ✅ Banner 1 */}
         <SwiperSlide>
-          <div className="relative w-full  h-[600px] xl:h-[800px] bg-green-500">
-            {/* <Image
-              src="/images/banners/img1.webp"
-              alt="Banner 1.1"
+          <div className="relative w-full h-[600px] xl:h-[900px] bg-green-500">
+            <Image
+              src={
+                isMobile
+                  ? "/images/banners/img1-mobile.jpeg"
+                  : "/images/banners/img1-desktop.jpeg"
+              }
+              alt="Banner 1"
               className="absolute inset-0 cursor-grab w-full h-full object-cover object-center"
               width={1920}
               height={1080}
-            /> */}
+            />
           </div>
         </SwiperSlide>
 
+        {/* ✅ Banner 2 */}
         <SwiperSlide>
-          <div className="relative w-full  h-[600px] xl:h-[800px] bg-blue-500">
-            {/* <Image
-              src="/images/banners/img2.webp"
+          <div className="relative w-full h-[600px] xl:h-[900px] bg-blue-500">
+            <Image
+              src={
+                isMobile
+                  ? "/images/banners/img-1-desktop.jpeg"
+                  : "/images/banners/img-1-desktop.jpeg"
+              }
               alt="Banner 2"
+              className="absolute inset-0 cursor-grab w-full h-full object-cover object-center"
               width={1920}
               height={1080}
-              className="absolute inset-0 cursor-grab w-full h-full object-cover object-center"
-            /> */}
+            />
           </div>
         </SwiperSlide>
 
+        {/* ✅ Banner 3 */}
         <SwiperSlide>
-          <div className="relative w-full  h-[600px] xl:h-[800px] bg-orange-500">
-            {/* <Image
-              src="/images/banners/img3.webp"
-              alt="Banner3"
-              width={1920}
-              height={1080}
+          <div className="relative w-full h-[600px] xl:h-[900px] bg-orange-500">
+            <Image
+              src={
+                isMobile
+                  ? "/images/banners/img3-mobile.jpeg"
+                  : "/images/banners/img3-desktop.jpeg"
+              }
+              alt="Banner 3"
               className="absolute inset-0 cursor-grab w-full h-full object-cover object-center"
-            /> */}
+              width={1920}
+              height={900}
+            />
           </div>
         </SwiperSlide>
       </Swiper>

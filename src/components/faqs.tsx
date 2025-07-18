@@ -7,54 +7,54 @@ import {
 
 const faqs = [
   {
-    question: "What types of HSE certifications do you offer?",
+    question: "What services does SynexaTech offer?",
     answer:
-      "We offer internationally recognized certifications such as NEBOSH IGC, OSHA 30/48 Hours, ISO 45001, IOSH, and other technical site trainings including Fire Watcher, Confined Space, and First Aid.",
+      "We provide AI chatbots, AI-powered calling agents, and modern website development to help businesses automate customer communication, enhance engagement, and grow faster.",
   },
   {
-    question: "Are your certifications valid globally?",
+    question: "How much does your AI chatbot cost?",
     answer:
-      "Yes, our certifications like NEBOSH, IOSH, and ISO are globally accepted and enhance professional value across industries and countries.",
+      "Our AI chatbot costs a one-time setup fee of $250 USD. There are no monthly charges, and you also get a free 7-day trial to test it before committing.",
   },
   {
-    question: "Do you offer online or virtual training sessions?",
+    question: "Can your chatbot work on WhatsApp and Instagram?",
     answer:
-      "Absolutely! We offer in-person, virtual classroom, and self-paced online training options to suit your learning preferences and schedule.",
+      "Yes! Our chatbots integrate seamlessly with WhatsApp, Facebook Messenger, Instagram Direct Messages, and even your website live chat — all managed by one smart bot.",
   },
   {
-    question: "Is your training approved by international bodies?",
+    question: "Do you offer a free chatbot trial?",
     answer:
-      "Yes. We are affiliated with accredited institutions and our trainers are certified by bodies such as NEBOSH, IOSH, OSHA, and ISO. Our lead trainer is an approved NEBOSH tutor and examiner.",
+      "Absolutely! We offer a 7-day free trial where you can test the chatbot live on your platform, experience its features, and share feedback before final delivery.",
   },
   {
-    question: "Do you offer customized corporate training?",
+    question: "How long does it take to deliver my chatbot?",
     answer:
-      "Yes, we design and deliver tailored HSE programs for companies in industries like oil & gas, construction, logistics, and manufacturing — aligned with your organizational safety goals.",
+      "Once we finalize your requirements, we deliver your custom-built chatbot in just 3 working days.",
   },
   {
-    question: "How can I enroll in a course?",
+    question: "Do you build websites too?",
     answer:
-      "You can contact us via email, WhatsApp, or our course inquiry form. Once we receive your request, our team will guide you through the registration and scheduling process.",
+      "Yes, we build fast, mobile-friendly, and SEO-ready websites customized to your brand. Pricing starts at $600 USD for up to 6 pages, delivered within 5–7 working days.",
   },
   {
-    question: "Can I get assistance in choosing the right course?",
+    question: "Is hosting and domain included in the website price?",
     answer:
-      "Of course! Our team can assess your current role or goals and recommend the most suitable course — whether you're an individual or a company looking for workforce training.",
+      "No, hosting and domain charges are separate. However, we guide you in selecting and setting them up if needed.",
   },
   {
-    question: "Do you provide job assistance after training?",
+    question: "What are AI calling agents, and how do they work?",
     answer:
-      "While we do not guarantee job placement, many of our students go on to secure roles in reputed companies thanks to our practical training and international certifications.",
+      "AI calling agents are automated voice systems that talk like humans, qualify leads, send reminders, and handle follow-up calls using conversational AI — available 24/7 in multiple languages.",
   },
   {
-    question: "Where are you located and which countries do you serve?",
+    question: "What is the pricing for AI calling agents?",
     answer:
-      "Our head office is in Lahore, Pakistan. We also operate in Saudi Arabia and Tanzania — delivering training across multiple countries through both online and onsite modes.",
+      "Pricing is custom and depends on call volume, duration, language, and region. We offer a free consultation to create a package tailored to your needs.",
   },
   {
-    question: "Are your trainers industry-experienced?",
+    question: "What results can I expect from your services?",
     answer:
-      "Yes, all our trainers are seasoned HSE professionals with real-world experience in industries like oil & gas, construction, logistics, and engineering.",
+      "Businesses using SynexaTech solutions typically see 40–70% faster response times, up to 60% more qualified leads, reduced support costs, and improved customer satisfaction.",
   },
 ];
 

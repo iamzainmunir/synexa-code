@@ -30,11 +30,11 @@ interface ChatBotProps {
 const ChatBot: React.FC<ChatBotProps> = ({
   colors = {},
   suggestedPrompts = [
-    "Tell me about your services",
-    "What does Mind Changer HSE Consultancy do?",
-    "Where is MCC located and which countries do you operate in?",
-    "Why should I choose MCC over other training institutes?",
-  ],
+  "Tell me about your services",
+  "Why should I choose SynexaTech over others?",
+  "How much does your AI chatbot cost?",
+  "Do you provide a free chatbot trial?"
+],
   placeholder = "Type your message...",
   botName = "AI Assistant",
   welcomeMessage = "Hi! I'm here to help you learn more about MMC International. How can I assist you today?",

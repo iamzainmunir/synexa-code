@@ -9,6 +9,7 @@ import CountUpOnScroll from "@/components/CountUp";
 import AboutSectionCompanyValues from "@/components/company-values";
 import Faqs from "@/components/faqs";
 import Footer from "@/components/footer";
+import { Testimonials } from "@/components/animated-testimonials";
 
 const page = () => {
   return (
@@ -118,6 +119,7 @@ const page = () => {
         </div>
       </div>
       <AboutSectionCompanyValues />
+      <Testimonials />
       <Faqs />
       <Footer />
     </>
