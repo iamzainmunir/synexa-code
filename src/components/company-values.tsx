@@ -6,14 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
-  // AreaChart,
-  CheckCircle,
-  ArrowUpRightIcon,
+  // Lightbulb,
+  PhoneCall,
+  MessageCircle,
+  BarChart2,
   Globe,
-  Heart,
-  Lightbulb,
-  ShieldCheck,
-  Users,
+  Smartphone,
+  ArrowUpRightIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -42,145 +41,116 @@ type CompanyValue = {
   image?: string;
 };
 
-// Company values data
 const companyValues: CompanyValue[] = [
   {
-    id: "innovation",
-    name: "Innovation",
+    id: "calling-agent",
+    name: "AI Calling Agent",
     description:
-      "At MCC, we believe innovation drives safer futures. We integrate modern learning methods, digital tools, and scenario-based simulations to ensure HSE training stays relevant and impactful.",
-    icon: Lightbulb,
-    color: "text-amber-500",
+      "Boost your customer outreach with automated calling solutions, appointment reminders, and follow-up services powered by smart voice technology.",
+    icon: PhoneCall,
+    color: "text-purple-600",
     principles: [
-      "Implement smart, tech-driven training modules",
-      "Encourage out-of-the-box problem solving",
-      "Adopt updated safety standards and case studies",
-      "Continuously refine methods based on feedback",
+      "24/7 call handling for customer support",
+      "Automated lead generation and qualification",
+      "Natural conversational experience",
+      "CRM integration and performance analytics",
     ],
     testimonial: {
       quote:
-        "MCC’s creative approach helped us understand safety beyond theory — it became real, applicable, and memorable.",
-      author: "Alex Chen",
-      role: "Lead Product Engineer",
-      image:
-        "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=400",
-    },
-    image: "/images/core-features/1.png",
-  },
-  {
-    id: "integrity",
-    name: "Integrity",
-    description:
-      "We uphold the highest ethical standards in all our services. From registration to certification, every step at MCC is guided by transparency, honesty, and trust.",
-    icon: ShieldCheck,
-    color: "text-blue-600",
-    principles: [
-      "Stay true to international training ethics",
-      "Ensure transparency in course delivery",
-      "Protect student data and certification processes",
-      "Build long-term trust with every partner",
-    ],
-    testimonial: {
-      quote:
-        "You can trust MCC with your career and your team's safety — they never overpromise, and always deliver what they commit.",
-      author: "Sara Khan",
-      role: "Corporate Compliance Advisor",
-      image:
-        "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=400",
-    },
-    image: "/images/core-features/2.png",
-  },
-  {
-    id: "collaboration",
-    name: "Collaboration",
-    description:
-      "We work closely with companies, government bodies, and individuals to build safety programs that match local and global operational realities.",
-    icon: Users,
-    color: "text-violet-500",
-    principles: [
-      "Design courses in partnership with client goals",
-      "Stay aligned with site-specific requirements",
-      "Promote teamwork during sessions and workshops",
-      "Build knowledge together, not in silos",
-    ],
-    testimonial: {
-      quote:
-        "MCC involved our site supervisors, HR team, and safety leads in designing the perfect training experience for our team.",
-      author: "Awais Raza",
-      role: "HSE Manager – Energy Sector",
-      image:
-        "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=400",
+        "Our customer engagement improved drastically using the AI Calling Agent — more calls, better follow-ups, less workload.",
+      author: "Bilal Ahmed",
+      role: "Sales Lead, Retail Sector",
+      image: "/images/testimonials/1.png",
     },
     image: "/images/core-features/3.png",
   },
   {
-    id: "customer-focus",
-    name: "Customer Focus",
+    id: "chatbot",
+    name: "AI Chatbot",
     description:
-      "Every MCC service is designed around the learner’s or client’s goals. Whether it's an individual course or a full corporate roadmap, our approach is human-centered and result-driven.",
-    icon: Heart,
-    color: "text-rose-500",
+      "Streamline your customer interactions across WhatsApp, Facebook, and Instagram with advanced chat automation and instant responses.",
+    icon: MessageCircle,
+    color: "text-pink-500",
     principles: [
-      "Offer personalized support to every trainee",
-      "Adapt schedules and formats to client needs",
-      "Follow up post-training to ensure success",
-      "Handle each inquiry with professionalism and care",
+      "Respond instantly across social platforms",
+      "Automate FAQs, bookings, and lead capture",
+      "Personalize messages based on user queries",
+      "Reduce response time and increase satisfaction",
     ],
     testimonial: {
       quote:
-        "MCC isn’t just a training center — they treat you like a partner. Everything was tailored to our specific work environment.",
-      author: "Fatima Siddiqui",
-      role: "Operations Director – Logistics",
-      image:
-        "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=400",
+        "The AI Chatbot reduced our customer query load by 70%, freeing up our team for high-value tasks.",
+      author: "Sarah Khan",
+      role: "Customer Support Manager",
+      image: "/images/testimonials/2.png",
     },
     image: "/images/core-features/4.png",
   },
   {
-    id: "excellence",
-    name: "Excellence",
+    id: "powerbi",
+    name: "Power BI Solutions",
     description:
-      "We aim to lead the HSE training industry by maintaining superior quality in every program — through certified instructors, global standards, and impactful delivery.",
-    icon: CheckCircle,
-    color: "text-emerald-600",
+      "Transform raw data into insightful dashboards and reports. Empower your team with visual data storytelling and easy-to-read analytics.",
+    icon: BarChart2,
+    color: "text-yellow-500",
     principles: [
-      "Hire experienced, certified trainers",
-      "Align every course with latest HSE frameworks",
-      "Ensure high passing and satisfaction rates",
-      "Push beyond basic compliance to real impact",
+      "Build custom dashboards for KPIs",
+      "Interactive reporting with real-time data",
+      "Secure data access and sharing",
+      "Advanced visualizations for business intelligence",
     ],
     testimonial: {
       quote:
-        "What stood out about MCC was their commitment to detail and perfection — from training materials to assessments.",
-      author: "Zain Malik",
-      role: "Training Quality Auditor",
-      image:
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400",
+        "Our decision-making became faster and more accurate with MCC’s Power BI dashboards.",
+      author: "Ali Raza",
+      role: "Business Analyst",
+      image: "/images/testimonials/3.png",
     },
-    image: "/images/core-features/5.png",
+    image: "/images/core-features/1.png",
   },
   {
-    id: "sustainability",
-    name: "Sustainability",
+    id: "website-development",
+    name: "Website Development",
     description:
-      "We believe that long-term safety is rooted in sustainability. Our training encourages responsible actions that benefit both people and the planet.",
+      "Get a responsive, fast, and modern website designed to showcase your brand, generate leads, and convert visitors effortlessly.",
     icon: Globe,
-    color: "text-green-600",
+    color: "text-blue-500",
     principles: [
-      "Encourage safe behaviors with environmental impact",
-      "Reduce training waste via digital delivery",
-      "Promote responsible site operations",
-      "Educate teams on health-first long-term culture",
+      "Responsive design for all devices",
+      "SEO-optimized development",
+      "High performance and fast loading",
+      "Custom features based on business goals",
     ],
     testimonial: {
       quote:
-        "MCC helped us build an HSE system that doesn’t just comply, but sustains — for years to come.",
-      author: "Hamza Rehman",
-      role: "ISO & ESG Consultant",
-      image:
-        "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=400",
+        "The website MCC built for us loads fast, ranks well, and helps us get leads every day.",
+      author: "Amna Sheikh",
+      role: "Marketing Manager",
+      image: "/images/testimonials/4.png",
     },
-    image: "/images/core-features/6.png",
+    image: "/images/core-features/2.png",
+  },
+  {
+    id: "app-development",
+    name: "App Development",
+    description:
+      "Launch high-quality Android and iOS apps with user-friendly design, scalable architecture, and seamless functionality for your business.",
+    icon: Smartphone,
+    color: "text-green-500",
+    principles: [
+      "Native and cross-platform solutions",
+      "User-centric UI/UX design",
+      "Smooth performance and scalability",
+      "App store deployment and support",
+    ],
+    testimonial: {
+      quote:
+        "Our mobile app was delivered quickly with zero bugs and a fantastic user interface — highly recommend MCC!",
+      author: "Fahad Aslam",
+      role: "Founder, Tech Startup",
+      image: "/images/testimonials/5.png",
+    },
+    image: "/images/core-features/5.png",
   },
 ];
 

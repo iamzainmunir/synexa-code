@@ -81,21 +81,24 @@ const page = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mt-24 container">
         <div>
           <CountUpOnScroll
-            to={5000}
+            to={300}
             suffix="+"
             className="text-4xl font-bold text-primary"
           />
           <p className="mt-2 text-lg text-gray-700 font-bold">
-            Professionals Trained
+            Projects Delivered
           </p>
         </div>
         <div>
           <CountUpOnScroll
-            to={98}
+            to={95}
             suffix="%"
             className="text-4xl font-bold text-green-600"
           />
-          <p className="mt-2 text-lg text-gray-700 font-bold">Success Rate</p>
+          <p className="mt-2 text-lg text-gray-700 font-bold">
+            {" "}
+            Client Retention Rate
+          </p>
         </div>
         <div>
           <CountUpOnScroll
@@ -104,12 +107,12 @@ const page = () => {
             className="text-4xl font-bold text-blue-600"
           />
           <p className="mt-2 text-lg text-gray-700 font-bold">
-            Corporate Partners
+            Ongoing Clients
           </p>
         </div>
         <div>
           <CountUpOnScroll
-            to={3}
+            to={4}
             suffix="+"
             className="text-4xl font-bold text-purple-600"
           />

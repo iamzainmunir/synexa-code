@@ -105,7 +105,7 @@ export default function HeroSection() {
                     intergralCF_Bold.className
                   )}
                 >
-                  Empowering Safer Workplaces Through
+                  REVOLUTIONIZING WORKFLOWS WITH SMART SOLUTIONS
                   <br />
                   {
                     <span
@@ -117,12 +117,13 @@ export default function HeroSection() {
                       <Typewriter
                         options={{
                           strings: [
-                            "certified training",
-                            "expert consultancy.",
-                            "ISO standards.",
-                            "safety audits.",
-                            "global compliance.",
-                            "proven results.",
+                            "AI Chat Bot",
+                            "AI Calling Agent",
+                            "AI Automation",
+                            "Power BI",
+                            "Website Creation",
+                            "UI/UX",
+                            "App Development",
                           ],
                           autoStart: true,
                           loop: true,
@@ -138,17 +139,21 @@ export default function HeroSection() {
                   delay={0.5}
                   as="p"
                   className={clsx(
-                    "mx-auto mt-8 max-w-2xl text-balance text-sm sm:text-lg px-2",
+                    "mx-auto mt-8 font-medium max-w-3xl text-balance text-sm sm:text-lg px-2",
                     syne.className
                   )}
                 >
-                  At Mind Changer HSE Consultancy, we deliver internationally
-                  accredited Health, Safety, and Environment (HSE) training
-                  tailored to meet global standards and local industry needs.
-                  With a presence in Pakistan, Saudi Arabia, and Tanzania, our
-                  mission is to elevate workplace safety through expert-led
-                  programs, real-world skills, and regulatory compliance.
+                  At SyenxaTech, we deliver smart, scalable, and
+                  high-performance AI solutions designed to streamline your
+                  business operations. From intelligent AI chatbots to advanced
+                  calling agents, from process automation to custom dashboards —
+                  we help businesses grow faster with the power of artificial
+                  intelligence and technology.
                 </TextEffect>
+                <span className="font-extrabold text-primary text-lg">
+                  Our mission is simple: Automation that saves time, technology
+                  that drives growth, and AI that empowers you to do more.
+                </span>
 
                 <AnimatedGroup
                   variants={{
