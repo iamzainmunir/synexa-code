@@ -10,6 +10,7 @@ import clsx from "clsx";
 import { intergralCF_Bold, syne, unbounded } from "../../public/fonts/font";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import Typewriter from "typewriter-effect";
+import {useWindowSize} from "@/utils/window-width";
 
 const transitionVariants = {
   item: {
@@ -32,6 +33,9 @@ const transitionVariants = {
 };
 
 export default function HeroSection() {
+
+  const  {width} = useWindowSize()
+
   return (
     <>
       <main className="overflow-hidden">
@@ -105,7 +109,7 @@ export default function HeroSection() {
                     intergralCF_Bold.className
                   )}
                 >
-                  Empowering Safer Workplaces Through
+                  REVOLUTIONIZING WORKFLOWS WITH SMART SOLUTIONS
                   <br />
                   {
                     <span
@@ -117,12 +121,13 @@ export default function HeroSection() {
                       <Typewriter
                         options={{
                           strings: [
-                            "certified training",
-                            "expert consultancy.",
-                            "ISO standards.",
-                            "safety audits.",
-                            "global compliance.",
-                            "proven results.",
+                            "AI Chat Bot",
+                            "AI Calling Agent",
+                            "AI Automation",
+                            "Power BI",
+                            "Website Creation",
+                            "UI/UX",
+                            "App Development",
                           ],
                           autoStart: true,
                           loop: true,
@@ -138,17 +143,21 @@ export default function HeroSection() {
                   delay={0.5}
                   as="p"
                   className={clsx(
-                    "mx-auto mt-8 max-w-2xl text-balance text-sm sm:text-lg px-2",
+                    "mx-auto mt-8 font-medium max-w-3xl text-balance text-sm sm:text-lg px-2",
                     syne.className
                   )}
                 >
-                  At Mind Changer HSE Consultancy, we deliver internationally
-                  accredited Health, Safety, and Environment (HSE) training
-                  tailored to meet global standards and local industry needs.
-                  With a presence in Pakistan, Saudi Arabia, and Tanzania, our
-                  mission is to elevate workplace safety through expert-led
-                  programs, real-world skills, and regulatory compliance.
+                  At SyenxaTech, we deliver smart, scalable, and
+                  high-performance AI solutions designed to streamline your
+                  business operations. From intelligent AI chatbots to advanced
+                  calling agents, from process automation to custom dashboards —
+                  we help businesses grow faster with the power of artificial
+                  intelligence and technology.
                 </TextEffect>
+                <span className="font-extrabold text-primary text-lg">
+                  Our mission is simple: Automation that saves time, technology
+                  that drives growth, and AI that empowers you to do more.
+                </span>
 
                 <AnimatedGroup
                   variants={{
@@ -212,20 +221,45 @@ export default function HeroSection() {
                   className="bg-linear-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
                 />
                 <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
-                  <Image
-                    className="bg-background aspect-15/8 object-cover relative hidden rounded-2xl dark:block"
-                    src="/images/hero/hero-desktop.png"
-                    alt="app screen"
-                    width="2700"
-                    height="1440"
-                  />
-                  <Image
-                    className="z-2 border-border/25 aspect-15/8  object-cover relative rounded-2xl border dark:hidden"
-                    src="/images/hero/hero-desktop.png"
-                    alt="app screen"
-                    width="2700"
-                    height="1440"
-                  />
+                {/* For desktop -> Light and Dark theme  */}
+                  {
+                    width > 680 ?
+                    (<>
+                      <Image
+                          className="bg-background aspect-15/8 object-cover relative hidden rounded-2xl dark:block"
+                          src="/images/hero/hero-desktop.png"
+                          alt="app screen"
+                          width="2700"
+                          height="1440"
+                      />
+                      <Image
+                          className="z-2 border-border/25 aspect-15/8  object-cover relative rounded-2xl border dark:hidden"
+                          src="/images/hero/hero-desktop.png"
+                          alt="app screen"
+                          width="2700"
+                          height="1440"
+                      />
+                    </>)
+                        :
+                        (
+                            <>
+                              <Image
+                              className="bg-background w-[400px]  h-[500px] object-cover relative hidden rounded-2xl dark:block"
+                              src="/images/hero/hero-mobile.png"
+                              alt="app screen"
+                              width="2700"
+                              height="1440"
+                              />
+                              <Image
+                                  className="z-2 border-border/25 w-[400px] h-[500px]  object-cover relative rounded-2xl border dark:hidden"
+                                  src="/images/hero/hero-mobile.png"
+                                  alt="app screen"
+                                  width="2700"
+                                  height="1440"
+                              />
+                            </>
+                        )
+                  }
                 </div>
               </div>
             </AnimatedGroup>

@@ -67,8 +67,8 @@ export default function App() {
             <Image
               src={
                 isMobile
-                  ? "/images/banners/img-1-desktop.jpeg"
-                  : "/images/banners/img-1-desktop.jpeg"
+                  ? "/images/banners/img2-desktop.png"
+                  : "/images/banners/img2-desktop.png"
               }
               alt="Banner 2"
               className="absolute inset-0 cursor-grab w-full h-full object-cover object-center"
