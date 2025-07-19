@@ -28,7 +28,6 @@ export default function HeroSection() {
     <main className="overflow-hidden">
       <section>
         <div className="relative pt-10">
-          {/* ✅ Gradient Background */}
           <div
             aria-hidden
             className="absolute inset-0 isolate hidden opacity-65 lg:block"
@@ -36,7 +35,6 @@ export default function HeroSection() {
             <div className="w-140 h-320 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
           </div>
 
-          {/* ✅ Hero Text Section */}
           <div className="mx-auto max-w-7xl sm:px-6 text-center">
             <AnimatedGroup variants={transitionVariants}>
               <HoverBorderGradient
@@ -107,7 +105,6 @@ export default function HeroSection() {
               Automation that saves time. Technology that drives growth.
             </span>
 
-            {/* ✅ Buttons */}
             <AnimatedGroup
               variants={{
                 container: {
@@ -137,7 +134,6 @@ export default function HeroSection() {
             </AnimatedGroup>
           </div>
 
-          {/* ✅ Responsive Image Section */}
           <AnimatedGroup
             variants={{
               container: {
@@ -155,7 +151,6 @@ export default function HeroSection() {
               />
               <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg">
                 <>
-                  {/* Desktop Dark */}
                   <Image
                     className="aspect-15/8 object-cover hidden rounded-2xl dark:block"
                     src="/images/hero/hero-desktop.png"
@@ -163,7 +158,6 @@ export default function HeroSection() {
                     width={2700}
                     height={1440}
                   />
-                  {/* Desktop Light */}
                   <Image
                     className="aspect-15/8 object-cover rounded-2xl border dark:hidden"
                     src="/images/hero/hero-desktop.png"
