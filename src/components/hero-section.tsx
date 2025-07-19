@@ -10,7 +10,6 @@ import clsx from "clsx";
 import { intergralCF_Bold, syne, unbounded } from "../../public/fonts/font";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import Typewriter from "typewriter-effect";
-// import { useWindowSize } from "@/utils/window-width";
 
 const transitionVariants = {
   item: {
@@ -25,9 +24,6 @@ const transitionVariants = {
 };
 
 export default function HeroSection() {
-  // const { width } = useWindowSize();
-  // const isDesktop = width && width > 680;
-
   return (
     <main className="overflow-hidden">
       <section>
@@ -176,26 +172,6 @@ export default function HeroSection() {
                     height={1440}
                   />
                 </>
-                {/*) : (*/}
-                <>
-                  {/* Mobile Dark */}
-                  {/*<Image*/}
-                  {/*    className="aspect-15/8 object-cover hidden rounded-2xl dark:block"*/}
-                  {/*    src="/images/hero/hero-desktop.png"*/}
-                  {/*    alt="app screen"*/}
-                  {/*    width={1080}*/}
-                  {/*    height={1920}*/}
-                  {/*/>*/}
-                  {/*/!* Mobile Light *!/*/}
-                  {/*<Image*/}
-                  {/*    className="aspect-15/8 object-cover rounded-2xl border dark:hidden"*/}
-                  {/*    src="/images/hero/hero-desktop.png"*/}
-                  {/*    alt="app screen"*/}
-                  {/*    width={1080}*/}
-                  {/*    height={1920}*/}
-                  {/*/>*/}
-                </>
-                {/*)}*/}
               </div>
             </div>
           </AnimatedGroup>
