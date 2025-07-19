@@ -10,10 +10,12 @@ import AboutSectionCompanyValues from "@/components/company-values";
 import Faqs from "@/components/faqs";
 import Footer from "@/components/footer";
 import { Testimonials } from "@/components/animated-testimonials";
+import SmokeyCursor from "@/components/ui/smoky-cursor";
 
 const page = () => {
   return (
     <>
+      <SmokeyCursor />
       <HeroHeader />
       <div className="pt-[60px] lg:pt-[100px]">
         <Slider />
