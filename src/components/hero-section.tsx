@@ -158,7 +158,6 @@ export default function HeroSection() {
                 className="bg-linear-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
               />
               <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg">
-                {/*{isDesktop ? (*/}
                 <>
                   {/* Desktop Dark */}
                   <Image
