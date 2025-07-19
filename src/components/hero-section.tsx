@@ -139,6 +139,9 @@ export default function HeroSection() {
                   <Link href="#link">Request a demo</Link>
                 </Button>
               </AnimatedGroup>
+
+
+
             </div>
 
             {/* ✅ Responsive Image Section */}
@@ -154,8 +157,8 @@ export default function HeroSection() {
             >
               <div className="relative -mr-0 mt-8 overflow-hidden px-2 sm:mt-12 md:mt-20">
                 <div
-                    ari
-                    a-hidden
+                    
+                    aria-hidden
                     className="bg-linear-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
                 />
                 <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg">
