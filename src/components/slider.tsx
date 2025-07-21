@@ -27,7 +27,7 @@ const useWindowWidth = () => {
 
 export default function App() {
   const width = useWindowWidth();
-  const isMobile = width && width < 768; // ✅ Tailwind md breakpoint logic (you can adjust)
+  const isMobile = width && width < 768;
 
   return (
     <>
@@ -67,7 +67,7 @@ export default function App() {
             <Image
               src={
                 isMobile
-                  ? "/images/banners/img2-desktop.png"
+                  ? "/images/banners/img3-mobile.png"
                   : "/images/banners/img2-desktop.png"
               }
               alt="Banner 2"
@@ -84,8 +84,8 @@ export default function App() {
             <Image
               src={
                 isMobile
-                  ? "/images/banners/img3-mobile.jpeg"
-                  : "/images/banners/img3-desktop.jpeg"
+                  ? "/images/banners/img3-mobile_.png"
+                  : "/images/banners/img3-desktop.png"
               }
               alt="Banner 3"
               className="absolute inset-0 cursor-grab w-full h-full object-cover object-center"

@@ -11,6 +11,7 @@ import Faqs from "@/components/faqs";
 import Footer from "@/components/footer";
 import { Testimonials } from "@/components/animated-testimonials";
 import SmokeyCursor from "@/components/ui/smoky-cursor";
+import ContactSection from "@/components/contact";
 
 const page = () => {
   return (
@@ -125,7 +126,25 @@ const page = () => {
       </div>
       <AboutSectionCompanyValues />
       <Testimonials />
+      <ContactSection />
       <Faqs />
+      <footer className="text-white py-6 bg-border bg-bottom ">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
+          <div>
+            <h2 className="text-lg font-bold">SyenxaTech</h2>
+            <p className="text-sm">AI Chatbots | Automation | Digital Tools</p>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-bold">Quantum Ltd (UK)</h2>
+            <p className="text-sm">UK Registered Company</p>
+          </div>
+
+          <div className="text-xs">
+            &copy; 2025 SyenxaTech & Quantum Ltd. All rights reserved.
+          </div>
+        </div>
+      </footer>
       <Footer />
     </>
   );
