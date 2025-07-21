@@ -5,8 +5,8 @@ import servicesData from "@/data/services-card.json";
 
 const CoursesAndCertificates = () => {
   return (
-    <div className="container my-10">
-      <Heading simpleWord="Our TRAININGS &" highlightedWord="Certificates" />
+    <div className="container my-10" id="services">
+      <Heading simpleWord="Our Services &" highlightedWord="Expertise" />
       <div className="card-container gap-5 flex flex-wrap items-center justify-center">
         {servicesData.map((services, idx) => {
           return (

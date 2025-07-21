@@ -165,6 +165,7 @@ body {
   letter-spacing: var(--tracking-normal);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }
 
 @layer base {
@@ -181,3 +182,4 @@ body {
   }
 
 }
+

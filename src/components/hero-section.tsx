@@ -116,20 +116,16 @@ export default function HeroSection() {
               }}
               className="mt-8 mx-auto flex flex-col items-center justify-center gap-2 md:flex-row"
             >
-              <Button
-                asChild
-                size="lg"
-                className="rounded-xl px-5 text-base w-full sm:w-auto"
-              >
-                <Link href="#link">Start Building</Link>
-              </Button>
+              
               <Button
                 asChild
                 size="lg"
                 variant="ghost"
                 className="rounded-xl px-5 w-full sm:w-auto"
               >
-                <Link href="#link">Request a demo</Link>
+                <Link href="#services">
+                <Image src="/images/scroll.gif" alt="scroll" className="w-[50px] h-[50px]" width={150} height={150} />
+                </Link>
               </Button>
             </AnimatedGroup>
           </div>

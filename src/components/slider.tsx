@@ -50,7 +50,7 @@ export default function App() {
             <Image
               src={
                 isMobile
-                  ? "/images/banners/img1-mobile.jpeg"
+                  ? "/images/banners/img4-mobile.png"
                   : "/images/banners/img4-desktop.png"
               }
               alt="Banner 1"
