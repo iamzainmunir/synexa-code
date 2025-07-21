@@ -72,7 +72,7 @@ export default function ContactSection() {
                 <Input type="email" id="email" required />
               </div>
               <div>
-                <Label htmlFor="country" className="space-y-2">
+                <Label htmlFor="services" className="space-y-2">
                   Services
                 </Label>
                 <Select>
@@ -87,6 +87,7 @@ export default function ContactSection() {
                     <SelectItem value="ai_business_automation">
                       AI business automation
                     </SelectItem>
+                    <SelectItem value="ai_chatbot">AI Chatbot</SelectItem>
                     <SelectItem value="mobile_development">
                       Mobile development
                     </SelectItem>
