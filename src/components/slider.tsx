@@ -51,7 +51,23 @@ export default function App() {
               src={
                 isMobile
                   ? "/images/banners/img1-mobile.jpeg"
-                  : "/images/banners/img1-desktop.jpeg"
+                  : "/images/banners/img4-desktop.png"
+              }
+              alt="Banner 1"
+              className="absolute inset-0 cursor-grab w-full h-full object-cover object-center"
+              width={1920}
+              height={1080}
+            />
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className="relative w-full h-[600px] xl:h-[900px] bg-green-500">
+            <Image
+              src={
+                isMobile
+                  ? "/images/banners/img1-mobile.jpeg"
+                  : "/images/banners/img1-desktop.png"
               }
               alt="Banner 1"
               className="absolute inset-0 cursor-grab w-full h-full object-cover object-center"
