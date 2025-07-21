@@ -121,10 +121,10 @@ export default function HeroSection() {
                 asChild
                 size="lg"
                 variant="ghost"
-                className="rounded-xl px-5 w-full sm:w-auto"
+                className="rounded-xl px-5 w-full sm:w-auto bg-transparent"
               >
                 <Link href="#services">
-                <Image src="/images/scroll.gif" alt="scroll" className="w-[50px] h-[50px]" width={150} height={150} />
+                <Image src="/images/scroll.gif" alt="scroll" className="w-[50px] h-[50px] bg-transparent" width={150} height={150} />
                 </Link>
               </Button>
             </AnimatedGroup>
