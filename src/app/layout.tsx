@@ -8,7 +8,8 @@ import ChatBot from "@/components/chatbot";
 export const metadata: Metadata = {
   title: "Syenxa Technologies",
   description:
-    "Mind Changer HSE Consultancy provides internationally accredited HSE training, safety audits, and certifications across Pakistan, Saudi Arabia, and Tanzania.",
+    ` At SyenxaTech, we deliver smart, scalable, and high-performance AI
+      solutions designed to streamline your business operations...`
 };
 
 export default function RootLayout({
