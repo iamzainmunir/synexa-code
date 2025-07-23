@@ -1,7 +1,6 @@
 import { google } from "@ai-sdk/google";
 import { generateText } from "ai";
 
-// 30 seconds max
 export const maxDuration = 30;
 
 const WEBSITE_CONTEXT = `
@@ -158,24 +157,28 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
 
-    const result = await generateText({
+    const systemPrompt = `${WEBSITE_CONTEXT}`;
+
+    const { text } = await generateText({
       model: google("gemini-2.5-flash"),
-      system: WEBSITE_CONTEXT,
+      system: systemPrompt,
       messages,
       temperature: 0.7,
       maxTokens: 500,
     });
 
     return new Response(
-      JSON.stringify({
-        id: Date.now().toString(),
-        role: "assistant",
-        content: result.text,
-      }),
-      { headers: { "Content-Type": "application/json" } }
+      JSON.stringify({ content: text }), // ✅ UI expects "content"
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
     );
   } catch (error) {
     console.error("Chatbot Error:", error);
-    return new Response("Internal server error", { status: 500 });
+    return new Response(
+      JSON.stringify({ content: "Sorry, something went wrong." }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }

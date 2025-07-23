@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import ChatBot from "@/components/chatbot";
 
 export const metadata: Metadata = {
-  title: "MCC INTERNATIONAL",
+  title: "Syenxa Technologies",
   description:
     "Mind Changer HSE Consultancy provides internationally accredited HSE training, safety audits, and certifications across Pakistan, Saudi Arabia, and Tanzania.",
 };
