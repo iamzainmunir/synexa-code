@@ -1,10 +1,8 @@
-// Full working chatbot component with loader and Gemini support
 "use client";
 
 import type React from "react";
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useChat } from "ai/react";
 import ReactMarkdown from "react-markdown";
 
 import {
@@ -18,8 +16,22 @@ import {
   X,
 } from "lucide-react";
 
+// Complete Chatbot Component with all features
 interface ChatBotProps {
-  colors?: Record<string, string>;
+  // Customization props
+  colors?: {
+    primary?: string;
+    primaryHover?: string;
+    accent?: string;
+    accentHover?: string;
+    background?: string;
+    surface?: string;
+    border?: string;
+    text?: string;
+    textSecondary?: string;
+    textMuted?: string;
+    shadow?: string;
+  };
   suggestedPrompts?: string[];
   placeholder?: string;
   botName?: string;
@@ -37,15 +49,17 @@ const ChatBot: React.FC<ChatBotProps> = ({
 ],
   placeholder = "Type your message...",
   botName = "AI Assistant",
-  welcomeMessage = "Hi! I'm here to help you learn more about MMC International. How can I assist you today?",
+  welcomeMessage = "Hi! I'm here to help you learn more about Huzaifa Mukhtar. How can I assist you today?",
   position = "bottom-right",
 }) => {
+  // State management
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Default theme with customization support
   const theme = {
     primary: "#1f2937",
     primaryHover: "#111827",
@@ -62,55 +76,96 @@ const ChatBot: React.FC<ChatBotProps> = ({
     ...colors,
   };
 
-  const {
-    messages,
-    input,
-    handleInputChange,
-    handleSubmit,
-    isLoading,
-    setInput,
-    append,
-  } = useChat({
-    api: "/api/chat",
-    onResponse: async (res) => {
-      const data = await res.json();
-      append({
-        id: data.id || Date.now().toString(),
-        role: data.role || "assistant",
-        content: data.content,
+  // Custom chat state (non-streaming)
+  const [messages, setMessages] = useState<
+    Array<{ id: string; role: "user" | "assistant"; content: string }>
+  >([]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = async (messageContent?: string) => {
+    const contentToSend = messageContent || input;
+    if (!contentToSend.trim() || isLoading) return;
+
+    const userMessage = {
+      id: Date.now().toString(),
+      role: "user" as const,
+      content: contentToSend,
+    };
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+    setIsLoading(true);
+    setShowSuggestions(false);
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...messages, userMessage].map((m) => ({
+            role: m.role,
+            content: m.content,
+          })),
+        }),
       });
-    },
-  });
 
-  useEffect(() => {
+      if (!response.ok) throw new Error("Failed to get response");
+
+      const data = await response.json();
+      const assistantMessage = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant" as const,
+        content:
+          data.content ||
+          data.text ||
+          "Sorry, I could not process your request.",
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error("Chat error:", error);
+      const errorMessage = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant" as const,
+        content: "Sorry, something went wrong. Please try again.",
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+      setTimeout(() => inputRef.current?.focus(), 100);
+    }
+  };
+
+  // Auto-scroll to bottom
+  const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
   }, [messages]);
 
   useEffect(() => {
-    if (messages.length > 0) setShowSuggestions(false);
+    if (messages.length > 0) {
+      setShowSuggestions(false);
+    }
   }, [messages]);
 
+  // Event handlers
   const handleSuggestionClick = (suggestion: string) => {
     setInput(suggestion);
     setShowSuggestions(false);
-    handleSubmit({
-      preventDefault: () => {},
-      target: { message: { value: suggestion } },
-    } as any);
+    handleSubmit(suggestion);
   };
-
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      handleInputChange(e);
-    },
-    [handleInputChange]
-  );
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input.trim() && !isLoading) {
-      handleSubmit(e);
-      setShowSuggestions(false);
+      handleSubmit();
     }
   };
 
@@ -126,255 +181,440 @@ const ChatBot: React.FC<ChatBotProps> = ({
 
   const toggleMinimize = () => {
     setIsMinimized(!isMinimized);
-    if (isMinimized) setTimeout(() => inputRef.current?.focus(), 300);
+    if (isMinimized) {
+      setTimeout(() => inputRef.current?.focus(), 300);
+    }
   };
 
-  const renderedMessages = useMemo(
-    () =>
-      messages.map((message, index) => (
-        <motion.div
-          key={message.id}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.05 }}
-          className={`flex gap-3 my-2 ${
-            message.role === "user" ? "justify-end" : "justify-start"
-          }`}
-        >
-          {message.role === "assistant" && (
-            <div
-              className="mt-1 h-7 w-7 flex items-center justify-center rounded-full"
-              style={{ backgroundColor: theme.accent }}
-            >
-              <Bot className="h-4 w-4 text-white" />
-            </div>
-          )}
+  // Position classes
+  const positionClasses = {
+    "bottom-right": "bottom-6 right-6",
+    "bottom-left": "bottom-6 left-6",
+  };
 
-          <div
-            className={`max-w-[75%] rounded-2xl px-4 py-3 ${
-              message.role === "user" ? "rounded-br-md" : "rounded-bl-md"
-            }`}
-            style={{
-              backgroundColor:
-                message.role === "user" ? theme.primary : theme.background,
-              color: message.role === "user" ? "white" : theme.text,
-              border:
-                message.role === "assistant"
-                  ? `1px solid ${theme.border}`
-                  : "none",
-            }}
-          >
-            <p className="text-sm leading-relaxed whitespace-pre-wrap">
-              <ReactMarkdown>{message.content}</ReactMarkdown>
-            </p>
-          </div>
-
-          {message.role === "user" && (
-            <div
-              className="mt-1 h-7 w-7 flex items-center justify-center rounded-full"
-              style={{ backgroundColor: theme.surface }}
-            >
-              <User
-                className="h-4 w-4"
-                style={{ color: theme.textSecondary }}
-              />
-            </div>
-          )}
-        </motion.div>
-      )),
-    [messages]
+  // Custom Button Component
+  const CustomButton: React.FC<{
+    onClick?: () => void;
+    disabled?: boolean;
+    className?: string;
+    style?: React.CSSProperties;
+    children: React.ReactNode;
+    type?: "button" | "submit";
+    onMouseEnter?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onMouseLeave?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  }> = ({
+    onClick,
+    disabled,
+    className,
+    style,
+    children,
+    type = "button",
+    onMouseEnter,
+    onMouseLeave,
+  }) => (
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={`transition-all duration-200 ${className} ${
+        disabled ? "cursor-not-allowed opacity-50" : ""
+      }`}
+      style={style}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      {children}
+    </button>
   );
 
   return (
-    <div
-      className={`fixed ${
-        position === "bottom-right" ? "bottom-6 right-2" : "bottom-6 left-2"
-      } z-50`}
-    >
+    <>
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="w-80 md:w-96 overflow-hidden rounded-2xl border shadow-lg"
-            style={{
-              backgroundColor: theme.background,
-              borderColor: theme.border,
-              boxShadow: theme.shadow,
-            }}
-          >
-            <div
-              className="flex items-center justify-between border-b px-4 py-3"
-              style={{
-                backgroundColor: theme.surface,
-                borderColor: theme.border,
-              }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm md:hidden"
+            onClick={closeChat}
+          />
+        )}
+      </AnimatePresence>
+
+      <div className={`fixed ${positionClasses[position]} z-50`}>
+        {/* Chat Window */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="mb-4"
             >
-              <div className="flex items-center gap-3">
+              <div
+                className="w-80 overflow-hidden rounded-2xl border md:w-96"
+                style={{
+                  backgroundColor: theme.background,
+                  borderColor: theme.border,
+                  boxShadow: theme.shadow,
+                }}
+              >
+                {/* Header */}
                 <div
-                  className="flex h-8 w-8 items-center justify-center rounded-full"
-                  style={{ backgroundColor: theme.accent }}
+                  className="flex items-center justify-between border-b px-4 py-3"
+                  style={{
+                    backgroundColor: theme.surface,
+                    borderColor: theme.border,
+                  }}
                 >
-                  <Bot className="h-4 w-4 text-white" />
-                </div>
-                <div>
-                  <h3
-                    className="text-sm font-semibold"
-                    style={{ color: theme.text }}
-                  >
-                    {botName}
-                  </h3>
-                  <p className="text-xs" style={{ color: theme.textSecondary }}>
-                    Online now
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={toggleMinimize}
-                  className="flex h-8 w-8 items-center justify-center rounded hover:bg-gray-100"
-                >
-                  {isMinimized ? (
-                    <Maximize2 className="h-4 w-4" />
-                  ) : (
-                    <Minimize2 className="h-4 w-4 text-gray-500" />
-                  )}
-                </button>
-                <button
-                  onClick={closeChat}
-                  className="flex h-8 w-8 items-center justify-center rounded hover:bg-gray-100"
-                >
-                  <X className="h-4 w-4 text-gray-500" />
-                </button>
-              </div>
-            </div>
-            {!isMinimized && (
-              <div className="flex flex-col h-[28rem]">
-                <div className="flex-1 overflow-y-auto p-4">
-                  {messages.length === 0 && (
-                    <div className="text-center py-6">
-                      <div
-                        className="mx-auto mb-3 h-12 w-12 flex items-center justify-center rounded-full"
-                        style={{ backgroundColor: theme.accent }}
-                      >
-                        <Sparkles className="h-6 w-6 text-white" />
-                      </div>
-                      <h4
-                        className="mb-2 font-medium"
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="flex h-8 w-8 items-center justify-center rounded-full"
+                      style={{ backgroundColor: theme.accent }}
+                    >
+                      <Bot className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3
+                        className="text-sm font-semibold"
                         style={{ color: theme.text }}
                       >
-                        Welcome! 👋
-                      </h4>
+                        {botName}
+                      </h3>
                       <p
-                        className="text-sm px-2"
+                        className="text-xs"
                         style={{ color: theme.textSecondary }}
                       >
-                        {welcomeMessage}
+                        Online now
                       </p>
                     </div>
-                  )}
-
-                  {showSuggestions &&
-                    messages.length === 0 &&
-                    suggestedPrompts.map((prompt) => (
-                      <button
-                        key={prompt}
-                        onClick={() => handleSuggestionClick(prompt)}
-                        className="w-full text-left p-2 text-sm border rounded-lg mb-2 hover:border-blue-300"
-                        style={{
-                          backgroundColor: theme.background,
-                          borderColor: theme.border,
-                          color: theme.text,
-                        }}
-                      >
-                        {prompt}
-                      </button>
-                    ))}
-
-                  {renderedMessages}
-
-                  {isLoading && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex justify-start gap-3"
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CustomButton
+                      onClick={toggleMinimize}
+                      className="flex h-8 w-8 items-center justify-center rounded p-0 hover:bg-gray-100"
                     >
+                      {isMinimized ? (
+                        <Maximize2 className="h-4 w-4" />
+                      ) : (
+                        <Minimize2 className="h-4 w-4" />
+                      )}
+                    </CustomButton>
+                    <CustomButton
+                      onClick={closeChat}
+                      className="flex h-8 w-8 items-center justify-center rounded p-0 hover:bg-gray-100"
+                    >
+                      <X className="h-4 w-4" />
+                    </CustomButton>
+                  </div>
+                </div>
+
+                {/* Chat Content */}
+                <AnimatePresence>
+                  {!isMinimized && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      {/* Messages Container */}
                       <div
-                        className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full"
-                        style={{ backgroundColor: theme.accent }}
+                        className="h-80 space-y-4 overflow-y-auto p-4"
+                        style={{
+                          backgroundColor: theme.surface,
+                          scrollbarWidth: "thin",
+                          scrollbarColor: `${theme.border} transparent`,
+                        }}
                       >
-                        <Bot className="h-4 w-4 text-white" />
+                        {/* Welcome Message */}
+                        {messages.length === 0 && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="py-6 text-center"
+                          >
+                            <div
+                              className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full"
+                              style={{ backgroundColor: theme.accent }}
+                            >
+                              <Sparkles className="h-6 w-6 text-white" />
+                            </div>
+                            <h4
+                              className="mb-2 font-medium"
+                              style={{ color: theme.text }}
+                            >
+                              Welcome! 👋
+                            </h4>
+                            <p
+                              className="px-2 text-sm leading-relaxed"
+                              style={{ color: theme.textSecondary }}
+                            >
+                              {welcomeMessage}
+                            </p>
+                          </motion.div>
+                        )}
+
+                        {/* Suggested Prompts */}
+                        <AnimatePresence>
+                          {showSuggestions && messages.length === 0 && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ delay: 0.3 }}
+                              className="space-y-2"
+                            >
+                              <p
+                                className="text-xs font-medium"
+                                style={{ color: theme.textMuted }}
+                              >
+                                Suggested questions:
+                              </p>
+                              {suggestedPrompts.map((prompt, index) => (
+                                <motion.button
+                                  key={prompt}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: 0.4 + index * 0.1 }}
+                                  onClick={() => handleSuggestionClick(prompt)}
+                                  className="block w-full rounded-lg border p-3 text-left text-sm transition-colors hover:border-blue-300"
+                                  style={{
+                                    backgroundColor: theme.background,
+                                    borderColor: theme.border,
+                                    color: theme.text,
+                                  }}
+                                >
+                                  {prompt}
+                                </motion.button>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+
+                        {/* Chat Messages */}
+                        {messages.map((message, index) => (
+                          <motion.div
+                            key={message.id}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            className={`flex gap-3 ${
+                              message.role === "user"
+                                ? "justify-end"
+                                : "justify-start"
+                            }`}
+                          >
+                            {message.role === "assistant" && (
+                              <div
+                                className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full"
+                                style={{ backgroundColor: theme.accent }}
+                              >
+                                <Bot className="h-4 w-4 text-white" />
+                              </div>
+                            )}
+
+                            <div
+                              className={`max-w-[75%] rounded-2xl px-4 py-3 ${
+                                message.role === "user"
+                                  ? "rounded-br-md"
+                                  : "rounded-bl-md"
+                              }`}
+                              style={{
+                                backgroundColor:
+                                  message.role === "user"
+                                    ? theme.primary
+                                    : theme.background,
+                                color:
+                                  message.role === "user"
+                                    ? "white"
+                                    : theme.text,
+                                border:
+                                  message.role === "assistant"
+                                    ? `1px solid ${theme.border}`
+                                    : "none",
+                              }}
+                            >
+                              <div className="text-sm leading-relaxed whitespace-pre-wrap">
+                                <ReactMarkdown>{message.content}</ReactMarkdown>
+                              </div>
+                            </div>
+
+                            {message.role === "user" && (
+                              <div
+                                className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full"
+                                style={{ backgroundColor: theme.surface }}
+                              >
+                                <User
+                                  className="h-4 w-4"
+                                  style={{ color: theme.textSecondary }}
+                                />
+                              </div>
+                            )}
+                          </motion.div>
+                        ))}
+
+                        {/* Loading Indicator */}
+                        {isLoading && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="flex justify-start gap-3"
+                          >
+                            <div
+                              className="mt-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full"
+                              style={{ backgroundColor: theme.accent }}
+                            >
+                              <Bot className="h-4 w-4 text-white" />
+                            </div>
+                            <div
+                              className="rounded-2xl rounded-bl-md border px-4 py-3"
+                              style={{
+                                backgroundColor: theme.background,
+                                borderColor: theme.border,
+                              }}
+                            >
+                              <div className="flex space-x-1">
+                                {[0, 0.2, 0.4].map((delay, i) => (
+                                  <motion.div
+                                    key={i}
+                                    className="h-2 w-2 rounded-full"
+                                    style={{ backgroundColor: theme.textMuted }}
+                                    animate={{ scale: [1, 1.2, 1] }}
+                                    transition={{
+                                      duration: 1,
+                                      repeat: Number.POSITIVE_INFINITY,
+                                      delay,
+                                    }}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+
+                        <div ref={messagesEndRef} />
                       </div>
+
+                      {/* Input Area */}
                       <div
-                        className="rounded-2xl rounded-bl-md border px-4 py-3"
+                        className="border-t p-4"
                         style={{
                           backgroundColor: theme.background,
                           borderColor: theme.border,
                         }}
                       >
-                        <div className="flex space-x-1">
-                          {[0, 0.2, 0.4].map((delay, i) => (
-                            <motion.div
-                              key={i}
-                              className="h-2 w-2 rounded-full"
-                              style={{ backgroundColor: theme.textMuted }}
-                              animate={{ scale: [1, 1.2, 1] }}
-                              transition={{
-                                duration: 1,
-                                repeat: Infinity,
-                                delay,
-                              }}
-                            />
-                          ))}
-                        </div>
+                        <form onSubmit={onSubmit} className="flex gap-2">
+                          <input
+                            ref={inputRef}
+                            type="text"
+                            value={input}
+                            onChange={handleInputChange}
+                            placeholder={placeholder}
+                            disabled={isLoading}
+                            className="h-10 flex-1 rounded-full border-2 px-4 py-2 transition-colors outline-none focus:border-blue-400"
+                            style={{
+                              backgroundColor: theme.surface,
+                              borderColor: theme.border,
+                              color: theme.text,
+                            }}
+                          />
+                          <CustomButton
+                            type="submit"
+                            disabled={isLoading || !input.trim()}
+                            className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full p-0 hover:scale-105"
+                            style={{ backgroundColor: theme.accent }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor =
+                                theme.accentHover;
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor =
+                                theme.accent;
+                            }}
+                          >
+                            <Send className="h-4 w-4 text-white" />
+                          </CustomButton>
+                        </form>
                       </div>
                     </motion.div>
                   )}
-                  <div ref={messagesEndRef} />
-                </div>
-                <form
-                  onSubmit={onSubmit}
-                  className="border-t p-4 flex gap-2 items-center"
-                  style={{ borderColor: theme.border }}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Floating Button - Only show when chat is closed */}
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <CustomButton
+                onClick={openChat}
+                className="flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300"
+                style={{
+                  backgroundColor: theme.accent,
+                  boxShadow: theme.shadow,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = theme.accentHover;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = theme.accent;
+                }}
+              >
+                <MessageCircle className="h-6 w-6 text-white" />
+              </CustomButton>
+
+              {/* Notification Badge */}
+              {messages.length === 0 && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500"
                 >
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={input}
-                    onChange={handleChange}
-                    placeholder={placeholder}
-                    className="flex-1 rounded-full border px-4 py-2"
-                    style={{
-                      backgroundColor: theme.surface,
-                      borderColor: theme.border,
-                      color: theme.text,
+                  <motion.div
+                    className="h-2 w-2 rounded-full bg-white"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Number.POSITIVE_INFINITY,
                     }}
                   />
-                  <button
-                    type="submit"
-                    disabled={!input.trim() || isLoading}
-                    className="h-10 w-10 flex items-center justify-center rounded-full"
-                    style={{ backgroundColor: theme.accent }}
-                  >
-                    <Send className="h-4 w-4 text-white" />
-                  </button>
-                </form>
-              </div>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      {!isOpen && (
-        <button
-          onClick={openChat}
-          className="h-14 w-14 rounded-full flex items-center justify-center shadow-md"
-          style={{ backgroundColor: theme.accent }}
-        >
-          <MessageCircle className="h-6 w-6 text-white" />
-        </button>
-      )}
-    </div>
+                </motion.div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Custom Scrollbar Styles */}
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background-color: ${theme.border};
+          border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background-color: ${theme.textMuted};
+        }
+      `}</style>
+    </>
   );
 };
 

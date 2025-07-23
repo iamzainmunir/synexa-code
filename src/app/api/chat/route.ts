@@ -151,6 +151,8 @@ Businesses using SynexaTech services typically experience:
 
 You are now ready to act as the official AI assistant of **SynexaTech**.
 
+**Note**: The user will only ask questions that are directly related to the company profile and first time give the summary not the detailed response but if user ask for details then you will reply with the details of the company.
+
 `;
 
 export async function POST(req: Request) {
@@ -160,11 +162,11 @@ export async function POST(req: Request) {
     const systemPrompt = `${WEBSITE_CONTEXT}`;
 
     const { text } = await generateText({
-      model: openai("gpt-4o-mini"), // just the model ID
+      model: openai("gpt-4o-mini"), 
       system: systemPrompt,
       messages,
-      temperature: 0.7,
-      maxTokens: 800 ,
+      temperature: 0.5,
+      maxTokens: 300 ,
     });
 
     return new Response(
