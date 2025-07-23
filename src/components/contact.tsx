@@ -16,7 +16,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function ContactSection() {
-  
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -27,7 +26,9 @@ export default function ContactSection() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
 
@@ -41,18 +42,31 @@ export default function ContactSection() {
     setStatus("");
 
     try {
-      const res = await fetch("/api/submit", {
+      // 1. Send to Google Sheets
+      const sheetsRes = await fetch("/api/submit", {
         method: "POST",
         body: JSON.stringify(form),
         headers: { "Content-Type": "application/json" },
       });
 
-      const data = await res.json();
-      setLoading(false);
-      setStatus(data.status === "success" ? "Form submitted successfully!" : "Error submitting form");
+      // 2. Send to Formspree
+      const formspreeRes = await fetch("https://formspree.io/f/meozaper", {
+        method: "POST",
+        body: JSON.stringify(form),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (sheetsRes.ok && formspreeRes.ok) {
+        setStatus("Form submitted successfully!");
+        setForm({ name: "", email: "", service: "", country: "", message: "" });
+      } else {
+        setStatus("Error submitting form");
+      }
     } catch (err) {
-      setLoading(false);
+      console.error(err);
       setStatus("Error submitting form");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -89,26 +103,37 @@ export default function ContactSection() {
         </div>
 
         <div className="h-3 border-x bg-[repeating-linear-gradient(-45deg,var(--color-border),var(--color-border)_1px,transparent_1px,transparent_6px)]"></div>
-        <form   action="https://formspree.io/f/meozaper" method="POST" onSubmit={handleSubmit} className="border px-4 py-12 lg:px-0 lg:py-24">
+        <form onSubmit={handleSubmit} className="border px-4 py-12 lg:px-0 lg:py-24">
           <Card className="mx-auto max-w-lg p-8 sm:p-16">
             <h3 className="text-xl font-semibold">Let&apos;s get you to the right place</h3>
             <p className="mt-4 text-sm">
-              Reach out to our sales team! We’re eager to learn more about how
-              you plan to use our services.
+              Reach out to our sales team! We’re eager to learn more about how you plan to use our services.
             </p>
 
             <div className="**:[&>label]:block mt-12 space-y-6 *:space-y-3">
               <div>
                 <Label htmlFor="name">Full name</Label>
-                <Input onChange={handleChange} type="text" id="name" value={form.name} required />
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  id="name"
+                  value={form.name}
+                  required
+                />
               </div>
               <div>
                 <Label htmlFor="email">Email</Label>
-                <Input onChange={handleChange} type="email" id="email" value={form.email} required />
+                <Input
+                  onChange={handleChange}
+                  type="email"
+                  id="email"
+                  value={form.email}
+                  required
+                />
               </div>
               <div>
                 <Label htmlFor="services">Services</Label>
-                <Select onValueChange={handleServiceChange}>
+                <Select onValueChange={handleServiceChange} value={form.service}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select our services" />
                   </SelectTrigger>
@@ -125,11 +150,22 @@ export default function ContactSection() {
               </div>
               <div>
                 <Label htmlFor="country">Country / Region</Label>
-                <Input onChange={handleChange} type="text" id="country" value={form.country} required />
+                <Input
+                  onChange={handleChange}
+                  type="text"
+                  id="country"
+                  value={form.country}
+                  required
+                />
               </div>
               <div>
                 <Label htmlFor="message">Message</Label>
-                <Textarea onChange={handleChange} id="message" rows={3} value={form.message} />
+                <Textarea
+                  onChange={handleChange}
+                  id="message"
+                  rows={3}
+                  value={form.message}
+                />
               </div>
               <Button disabled={loading} type="submit">
                 {loading ? "Submitting..." : "Submit"}

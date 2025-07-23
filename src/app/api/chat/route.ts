@@ -1,4 +1,4 @@
-import { google } from "@ai-sdk/google";
+import { openai } from "@ai-sdk/openai";
 import { generateText } from "ai";
 
 export const maxDuration = 30;
@@ -160,19 +160,16 @@ export async function POST(req: Request) {
     const systemPrompt = `${WEBSITE_CONTEXT}`;
 
     const { text } = await generateText({
-      model: google("gemini-2.5-flash"),
+      model: openai("gpt-4o-mini"), // just the model ID
       system: systemPrompt,
       messages,
       temperature: 0.7,
-      maxTokens: 500,
+      maxTokens: 800 ,
     });
 
     return new Response(
-      JSON.stringify({ content: text }), // ✅ UI expects "content"
-      {
-        status: 200,
-        headers: { "Content-Type": "application/json" },
-      }
+      JSON.stringify({ content: text }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (error) {
     console.error("Chatbot Error:", error);
