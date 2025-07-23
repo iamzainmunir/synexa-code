@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useForm, ValidationError } from "@formspree/react";
-
 import {
   Select,
   SelectContent,
@@ -18,10 +16,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function ContactSection() {
-  const [state, handleSubmit] = useForm("mwpqlwkd");
-  if (state.succeeded) {
-      return <p>Thanks for joining!</p>;
-  }
+  
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -32,9 +27,7 @@ export default function ContactSection() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
 
@@ -42,7 +35,7 @@ export default function ContactSection() {
     setForm({ ...form, service: value });
   };
 
-  const handleFromSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus("");
@@ -56,11 +49,7 @@ export default function ContactSection() {
 
       const data = await res.json();
       setLoading(false);
-      setStatus(
-        data.status === "success"
-          ? "Form submitted successfully!"
-          : "Error submitting form"
-      );
+      setStatus(data.status === "success" ? "Form submitted successfully!" : "Error submitting form");
     } catch (err) {
       setLoading(false);
       setStatus("Error submitting form");
@@ -100,17 +89,9 @@ export default function ContactSection() {
         </div>
 
         <div className="h-3 border-x bg-[repeating-linear-gradient(-45deg,var(--color-border),var(--color-border)_1px,transparent_1px,transparent_6px)]"></div>
-        <form
-          onSubmit={(e) => {
-            handleFromSubmit(e)
-            handleSubmit(e);
-          }}
-          className="border px-4 py-12 lg:px-0 lg:py-24"
-        >
+        <form action={"https://formspree.io/f/mwpqlwkd"}  method="POST" onSubmit={handleSubmit} className="border px-4 py-12 lg:px-0 lg:py-24">
           <Card className="mx-auto max-w-lg p-8 sm:p-16">
-            <h3 className="text-xl font-semibold">
-              Let&apos;s get you to the right place
-            </h3>
+            <h3 className="text-xl font-semibold">Let&apos;s get you to the right place</h3>
             <p className="mt-4 text-sm">
               Reach out to our sales team! We’re eager to learn more about how
               you plan to use our services.
@@ -119,23 +100,11 @@ export default function ContactSection() {
             <div className="**:[&>label]:block mt-12 space-y-6 *:space-y-3">
               <div>
                 <Label htmlFor="name">Full name</Label>
-                <Input
-                  onChange={handleChange}
-                  type="text"
-                  id="name"
-                  value={form.name}
-                  required
-                />
+                <Input onChange={handleChange} type="text" id="name" value={form.name} required />
               </div>
               <div>
                 <Label htmlFor="email">Email</Label>
-                <Input
-                  onChange={handleChange}
-                  type="email"
-                  id="email"
-                  value={form.email}
-                  required
-                />
+                <Input onChange={handleChange} type="email" id="email" value={form.email} required />
               </div>
               <div>
                 <Label htmlFor="services">Services</Label>
@@ -145,41 +114,22 @@ export default function ContactSection() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="ai_automation">AI automation</SelectItem>
-                    <SelectItem value="website_development">
-                      Website development
-                    </SelectItem>
-                    <SelectItem value="ai_business_automation">
-                      AI business automation
-                    </SelectItem>
+                    <SelectItem value="website_development">Website development</SelectItem>
+                    <SelectItem value="ai_business_automation">AI business automation</SelectItem>
                     <SelectItem value="ai_chatbot">AI Chatbot</SelectItem>
-                    <SelectItem value="mobile_development">
-                      Mobile development
-                    </SelectItem>
-                    <SelectItem value="ai_calling_agent">
-                      AI calling agents
-                    </SelectItem>
+                    <SelectItem value="mobile_development">Mobile development</SelectItem>
+                    <SelectItem value="ai_calling_agent">AI calling agents</SelectItem>
                     <SelectItem value="ui/ux_design">UI/UX Design</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div>
                 <Label htmlFor="country">Country / Region</Label>
-                <Input
-                  onChange={handleChange}
-                  type="text"
-                  id="country"
-                  value={form.country}
-                  required
-                />
+                <Input onChange={handleChange} type="text" id="country" value={form.country} required />
               </div>
               <div>
                 <Label htmlFor="message">Message</Label>
-                <Textarea
-                  onChange={handleChange}
-                  id="message"
-                  rows={3}
-                  value={form.message}
-                />
+                <Textarea onChange={handleChange} id="message" rows={3} value={form.message} />
               </div>
               <Button disabled={loading} type="submit">
                 {loading ? "Submitting..." : "Submit"}
