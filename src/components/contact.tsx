@@ -89,8 +89,7 @@ export default function ContactSection() {
         </div>
 
         <div className="h-3 border-x bg-[repeating-linear-gradient(-45deg,var(--color-border),var(--color-border)_1px,transparent_1px,transparent_6px)]"></div>
-        <form action="https://formspree.io/f/mwpqlwkd"
-  method="POST" onSubmit={handleSubmit} className="border px-4 py-12 lg:px-0 lg:py-24">
+        <form   action="https://formspree.io/f/meozaper" method="POST" onSubmit={handleSubmit} className="border px-4 py-12 lg:px-0 lg:py-24">
           <Card className="mx-auto max-w-lg p-8 sm:p-16">
             <h3 className="text-xl font-semibold">Let&apos;s get you to the right place</h3>
             <p className="mt-4 text-sm">
