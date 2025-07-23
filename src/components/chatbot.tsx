@@ -294,7 +294,7 @@ const ChatBot: React.FC<ChatBotProps> = ({
                   <div className="flex items-center gap-1">
                     <CustomButton
                       onClick={toggleMinimize}
-                      className="flex h-8 w-8 items-center justify-center rounded p-0 hover:bg-gray-100"
+                      className="flex h-8 w-8 items-center justify-center rounded p-0 text-black hover:bg-gray-100"
                     >
                       {isMinimized ? (
                         <Maximize2 className="h-4 w-4" />
@@ -304,9 +304,9 @@ const ChatBot: React.FC<ChatBotProps> = ({
                     </CustomButton>
                     <CustomButton
                       onClick={closeChat}
-                      className="flex h-8 w-8 items-center justify-center rounded p-0 hover:bg-gray-100"
+                      className="flex h-8 w-8 items-center justify-center rounded p-0 text-black hover:bg-gray-100"
                     >
-                      <X className="h-4 w-4" />
+                      <X className="h-4 w-4 text-black" />
                     </CustomButton>
                   </div>
                 </div>
