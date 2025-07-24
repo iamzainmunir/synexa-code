@@ -135,7 +135,7 @@ const page = () => {
       <Testimonials />
       <ContactSection />
       <Faqs />
-      <footer className="text-white py-6 bg-border bg-bottom ">
+      <footer className="border-b text-foreground py-6 bg-background bg-bottom ">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
           <div>
             <h2 className="text-lg font-bold">SyenxaTech</h2>

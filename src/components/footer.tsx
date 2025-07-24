@@ -11,31 +11,48 @@ import {
 import Link from "next/link";
 
 const footerLinks = [
-  {
-    title: "Overview",
-    href: "#",
-  },
-  {
-    title: "Features",
-    href: "#",
-  },
-  {
-    title: "Pricing",
-    href: "#",
-  },
-  {
-    title: "Careers",
-    href: "#",
-  },
-  {
-    title: "Help",
-    href: "#",
-  },
-  {
-    title: "Privacy",
-    href: "#",
-  },
-];
+    {
+        title: "Home",
+        path: "/",
+    },
+    {
+        title: "Services",
+        path: "#services",
+    },
+    {
+        title: "Core features",
+        path: "#core-features",
+    }, {
+        title: "Core Services",
+        path: "/",
+        subItems: [
+            {
+                title: "Web Development",
+                path: "#core-features",
+            },
+            {
+               title: "AI Chatbots",
+                path: "#core-features",
+            },
+            {
+                title: "Mobile App Development",
+                path: "#core-features",
+            },
+            {
+                title: "AI Calling agents",
+                path: "#core-features",
+            },
+            {
+                title: "AI Automation",
+                path: "#core-features",
+            },
+            {
+                title: "Power BI Dashboards",
+                path: "#core-features",
+            },
+        ]
+    }
+]
 
 const Footer = () => {
   return (
@@ -55,10 +72,10 @@ const Footer = () => {
               />
 
               <ul className="mt-6 flex items-center gap-4 flex-wrap">
-                {footerLinks.map(({ title, href }) => (
+                {footerLinks.map(({ title, path }) => (
                   <li key={title}>
                     <Link
-                      href={href}
+                      href={path}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       {title}
@@ -83,7 +100,7 @@ const Footer = () => {
             <span className="text-muted-foreground">
               &copy; {new Date().getFullYear()}{" "}
               <Link href="/" target="_blank">
-                Mind Changer HSE Consultancy
+               
               </Link>
               . All rights reserved.
             </span>
