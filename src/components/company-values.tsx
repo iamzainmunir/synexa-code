@@ -162,7 +162,7 @@ export default function AboutSectionCompanyValues() {
     companyValues.find((value) => value.id === activeValue) || companyValues[0];
 
   return (
-    <section className="py-24">
+    <section id="core-features" className="py-24">
       <div className="container mx-auto px-4 md:px-6 2xl:max-w-[1400px]">
         <div className="mx-auto mb-16 max-w-3xl space-y-4 text-center">
           <div className="bg-primary/10 text-primary inline-block rounded-lg px-3 py-1 text-sm">

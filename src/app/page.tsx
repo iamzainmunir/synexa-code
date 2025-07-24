@@ -24,56 +24,63 @@ const page = () => {
       <HeroSection />
       <InfiniteSlider className="container" speedOnHover={20} gap={35}>
         <Image
-          src="/images/working-brands/img1.webp"
+          src="/images/working-brands/1.png"
           alt="Yung Lean - Stardust"
           className="aspect-square w-[120px] rounded-[4px]"
           width={120}
           height={120}
         />
         <Image
-          src="/images/working-brands/img2.webp"
+          src="/images/working-brands/2.png"
           alt="Lana Del Rey - Ultraviolence"
           className="aspect-square w-[120px] rounded-[4px]"
           width={120}
           height={120}
         />
         <Image
-          src="/images/working-brands/img3.webp"
+          src="/images/working-brands/3.png"
           alt="A$AP Rocky - Tailor Swif"
           className="aspect-square w-[120px] rounded-[4px]"
           width={120}
           height={120}
         />
         <Image
-          src="/images/working-brands/img4.webp"
+          src="/images/working-brands/4.png"
           alt="Midnight Miami (feat Konvy) - Nino Paid, Konvy"
           className="aspect-square w-[120px] rounded-[4px]"
           width={120}
           height={120}
         />
         <Image
-          src="/images/working-brands/img1.webp"
+          src="/images/working-brands/5.png"
           alt="Yung Lean - Stardust"
           className="aspect-square w-[120px] rounded-[4px]"
           width={120}
           height={120}
         />
         <Image
-          src="/images/working-brands/img2.webp"
+          src="/images/working-brands/6.png"
           alt="Lana Del Rey - Ultraviolence"
           className="aspect-square w-[120px] rounded-[4px]"
           width={120}
           height={120}
         />
         <Image
-          src="/images/working-brands/img3.webp"
+          src="/images/working-brands/7.png"
           alt="A$AP Rocky - Tailor Swif"
           className="aspect-square w-[120px] rounded-[4px]"
           width={120}
           height={120}
         />
         <Image
-          src="/images/working-brands/img4.webp"
+          src="/images/working-brands/8.png"
+          alt="Midnight Miami (feat Konvy) - Nino Paid, Konvy"
+          className="aspect-square w-[120px] rounded-[4px]"
+          width={120}
+          height={120}
+        />
+        <Image
+          src="/images/working-brands/9.png"
           alt="Midnight Miami (feat Konvy) - Nino Paid, Konvy"
           className="aspect-square w-[120px] rounded-[4px]"
           width={120}
@@ -128,7 +135,7 @@ const page = () => {
       <Testimonials />
       <ContactSection />
       <Faqs />
-      <footer className="text-white py-6 bg-border bg-bottom ">
+      <footer className="border-b text-foreground py-6 bg-background bg-bottom ">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
           <div>
             <h2 className="text-lg font-bold">SyenxaTech</h2>

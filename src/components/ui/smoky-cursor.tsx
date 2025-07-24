@@ -58,10 +58,10 @@ function pointerPrototype(): Pointer {
 }
 
 export default function SmokeyCursor({
-  simulationResolution = 128,
+  simulationResolution = 100,
   dyeResolution = 1440,
   captureResolution = 512,
-  densityDissipation = 3.5,
+  densityDissipation = 5.5,
   velocityDissipation = 2,
   pressure = 0.1,
   pressureIterations = 20,
