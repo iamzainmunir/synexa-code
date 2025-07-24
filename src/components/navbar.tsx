@@ -86,7 +86,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="logo">
           <Image
-            src={"/images/logo.webp"}
+            src={"/images/main_logo.svg"}
             alt="logo"
             width={100}
             height={100}
